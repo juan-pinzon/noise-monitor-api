@@ -14,6 +14,19 @@ function measurementApi(app) {
 		})
 	})
 
+	router.get('/alerts', async function(req, res, next) {
+		//const { nodo } = req.params
+		try {
+			const alertsNodo = await measurementService.getAlerts()
+			res.status(200).json({
+				data: alertsNodo,
+				message: `Alerts listed`
+			})
+		} catch (error) {
+			next(error)
+		}
+	})
+
 	router.get('/:nodo', async function(req, res, next) {
 		const { nodo } = req.params
 		try {
@@ -21,19 +34,6 @@ function measurementApi(app) {
 			res.status(200).json({
 				data: measurementsNodo,
 				message: `Measurements listed by nodo => ${nodo}`
-			})
-		} catch (error) {
-			next(error)
-		}
-	})
-
-	router.get('/alerts', async function(req, res, next) {
-		//const { nodo } = req.params
-		try {
-			const alertsNodo = await measurementService.getAlerts()
-			res.status(200).json({
-				data: alertsNodo,
-				message: `Alerts listed by nodo => ${nodo}`
 			})
 		} catch (error) {
 			next(error)

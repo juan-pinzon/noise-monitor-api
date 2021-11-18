@@ -27,7 +27,9 @@ class MeasurementService {
 
 	async getAlerts() {
 		const collection = 'alerts'
-		const alerts = await this.mongoDB.getAll(collection)
+		console.log(collection)
+		const alerts = await this.mongoDB.getAll(collection, {})
+		
 		return alerts || []
 	}
 
