@@ -25,9 +25,9 @@ class MeasurementService {
 		return measurementId
 	}
 
-	async getAlerts({ nodo }) {
+	async getAlerts() {
 		const collection = 'alerts'
-		const alerts = await this.mongoDB.getAll(collection, { nodo })
+		const alerts = await this.mongoDB.getAll(collection)
 		return alerts || []
 	}
 

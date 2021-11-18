@@ -27,10 +27,10 @@ function measurementApi(app) {
 		}
 	})
 
-	router.get('/alerts/:nodo', async function(req, res, next) {
-		const { nodo } = req.params
+	router.get('/alerts', async function(req, res, next) {
+		//const { nodo } = req.params
 		try {
-			const alertsNodo = await measurementService.getAlerts({ nodo })
+			const alertsNodo = await measurementService.getAlerts()
 			res.status(200).json({
 				data: alertsNodo,
 				message: `Alerts listed by nodo => ${nodo}`
